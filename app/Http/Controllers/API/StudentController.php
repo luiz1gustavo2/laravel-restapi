@@ -92,12 +92,13 @@ class StudentController extends Controller
             $student = Student::find($id);
             if($student)
             {
-
-                $student->name = $request->input('name');
-                $student->course = $request->input('course');
-                $student->email = $request->input('email');
-                $student->phone = $request->input('phone');
-                $student->update();
+                $student->update([
+                    'name'=>$request->name,
+                    'course'=>$request->course,
+                    'email'=>$request->email,
+                    'phone'=>$request->phone,
+                ]);
+               
 
                 return response()->json([
                     'status'=> 200,
